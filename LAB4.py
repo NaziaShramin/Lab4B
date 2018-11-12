@@ -2,10 +2,10 @@
 # T.A.:Anindita Nath, date of last modification:None
 class MyChainHashTable:
 
-    def __init__(self, capacity):
-        self.capacity = capacity
+    def __init__(self, table):
+        self.table = table
         self.slots = [ ]
-        for i in range(self.capacity):
+        for i in range(self.table):
             self.slots.append([])
 
     def __str__(self):
@@ -23,7 +23,7 @@ class MyChainHashTable:
         return count
 
     def hash_function(self, key):
-        i = key % self.capacity
+        i = key % self.table
         return i
 
 
@@ -52,7 +52,7 @@ def readFile():
     return x
 
 def printBase10ToBase26(ht):
-    for i in range(0, ht.capacity):
+    for i in range(0, ht.table):
         print("[", end="")
         for j in range(0, len(ht.slots[i])):
             if j == (len(ht.slots[i]) - 1):
@@ -63,11 +63,11 @@ def printBase10ToBase26(ht):
     print("")
 
 def get_load_factor(ht, wd):
-    return wd / (ht.capacity)
+    return wd / (ht.table)
 
 def get_average_comparison(ht):
     total_lists, total_items = 0, 0
-    for i in range(0, ht.capacity):
+    for i in range(0, ht.table):
         if ht.slots[i]!=[]:
             total_lists += 1
         for j in range(0, len(ht.slots[i])):
@@ -99,7 +99,7 @@ for i in range(0, len(words_in_file)):
 
 # printing hashtable as it is
 print("Hashtable X [base10]:", x)
-# print("Capacity X:",x.capacity)
+# print("table X:",x.table)
 # print("Slots X:", len(x.slots))
 # printing hashtable converted values
 print("Hashtable X [base26]: ", end ="")
